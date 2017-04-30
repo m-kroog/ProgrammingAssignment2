@@ -30,7 +30,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## to m, which is either the cached inverted matrix or a NULL value
 ## the if statement returns the value of m if m is not NULL
 ## if the value of m is NULL then the function will take the matrix in m and invert it
-## using the solve function and set it to m in the parent environment
+## using the solve function and set it to m in the parent envirnment
 
 cacheSolve <- function(x, ...) {
         m <- x$getsolve()
@@ -43,4 +43,23 @@ cacheSolve <- function(x, ...) {
         x$setsolve(m)
         m
         ## Return a matrix that is the inverse of 'x'
+        
+##      > mm <- set.seed(20)
+##      > mm <- matrix(rnorm(1:4), 2)
+
+##      > mm
+##      [,1]      [,2]
+##      [1,]  1.1626853  1.785465
+##      [2,] -0.5859245 -1.332594
+
+##      > mcm <- makeCacheMatrix(mm)
+##      > cacheSolve(mcm)
+##      [,1]      [,2]
+##      [1,]  2.648031  3.547943
+##      [2,] -1.164305 -2.310402
+
+##      > solve(mm)
+##      [,1]      [,2]
+##      [1,]  2.648031  3.547943
+##      [2,] -1.164305 -2.310402
 }
